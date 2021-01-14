@@ -304,14 +304,22 @@ open class CircularSlider: UIControl {
         let interval = Interval(min: minimumValue, max: maximumValue, rounds: numberOfRounds)
         let deltaValue = CircularSliderHelper.delta(in: interval, for: angle, oldValue: oldValue)
         
-        var newValue = oldValue + deltaValue
-        let range = maximumValue - minimumValue
+//         var newValue = oldValue + deltaValue
+//         let range = maximumValue - minimumValue
         
+//         if newValue > maximumValue {
+//             newValue -= range
+//         }
+//         else if newValue < minimumValue {
+//             newValue += range
+//         }
+//         return newValue
+        
+        var newValue = oldValue + deltaValue
         if newValue > maximumValue {
-            newValue -= range
-        }
-        else if newValue < minimumValue {
-            newValue += range
+            newValue = maximumValue - 0.1
+        } else if newValue < minimumValue {
+            newValue = minimumValue
         }
         return newValue
     }
